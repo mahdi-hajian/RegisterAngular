@@ -1,0 +1,12 @@
+button.btn-submit{
+    background-color: #385473;
+    color: #fff;
+    width: 100%
+}
+button.btn-submit:focus,button.btn-submit:hover{
+    background-color: #322273;
+}
+input.ng-invalid.ng-dirty{
+    border-bottom-color: #e91e61 !important; 
+    box-shadow: #e91e61 !important; 
+}

@@ -5,12 +5,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotifierModule  } from 'angular-notifier';
 
 import { AppComponent } from './app.component';
-import { SignUpComponent } from './componenets/sign-up/sign-up.component';
+import { SignUpComponent } from './componenets/user/sign-up/sign-up.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { UserComponent } from './Componenets/user/user.component';
+import { SignInComponent } from './Componenets/user/sign-in/sign-in.component';
+import { HomeComponent } from './Componenets/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignUpComponent
+    SignUpComponent,
+    UserComponent,
+    SignInComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,30 +33,13 @@ import { SignUpComponent } from './componenets/sign-up/sign-up.component';
         autoHide: 10000,
        
         /**
-         * Defines what happens when someone clicks on a notification
-         * @type {'hide' | false}
-         */
-        onClick: false,
-       
-        /**
-         * Defines what happens when someone hovers over a notification
-         * @type {'pauseAutoHide' | 'resetAutoHide' | false}
-         */
-        onMouseover: 'pauseAutoHide',
-       
-        /**
-         * Defines whether the dismiss button is visible or not
-         * @type {boolean} 
-         */
-        showDismissButton: true,
-       
-        /**
          * Defines whether multiple notification will be stacked, and how high the stack limit is
          * @type {number | false}
          */
         stacking: 20
       }
-    })
+    }),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

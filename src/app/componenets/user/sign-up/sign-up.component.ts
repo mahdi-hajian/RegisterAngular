@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Iuser } from '../../Interface/iuser';
-import { NgForm } from '../../../../node_modules/@angular/forms';
-import { UserService } from '../../Services/user.service';
-import { NotifierService } from '../../../../node_modules/angular-notifier';
+import { NgForm } from '../../../../../node_modules/@angular/forms';
+import { UserService } from '../../../Services/user.service';
+import { NotifierService } from '../../../../../node_modules/angular-notifier';
+import { Iuser } from '../../../Interface/iuser';
 
 @Component({
   selector: 'app-sign-up',

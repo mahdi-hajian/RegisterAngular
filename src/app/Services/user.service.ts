@@ -7,7 +7,7 @@ import { Iuser } from '../Interface/iuser';
 })
 export class UserService {
   // tslint:disable-next-line:quotemark
-  url = "http://localhost:46247/api/Account";
+  url = "http://localhost:60380/api/Account";
 
   constructor(private http: HttpClient) {
    }

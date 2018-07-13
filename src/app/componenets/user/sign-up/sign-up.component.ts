@@ -29,8 +29,10 @@ export class SignUpComponent implements OnInit {
   onSubmit() {
     this.userService.registerUser(this.userRegistrationForm.value).subscribe(
       (data: any) => {
+        console.log(data);
+        
         if (data.succeeded == true) {
-          this.notifier.notify( 'success', 'Success' );
+          this.notifier.notify( 'success', 'شما با موفقیت ثبت نام کردید' );
           this.resetForm(this.userRegistrationForm);
         }else{
           data.errors.forEach(element => {

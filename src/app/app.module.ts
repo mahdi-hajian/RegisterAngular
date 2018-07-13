@@ -23,9 +23,25 @@ import { HomeComponent } from './Componenets/home/home.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    /* https://www.npmjs.com/package/angular-notifier */
     NotifierModule.withConfig({
-      behaviour: {
+      position: {
  
+        horizontal: {
+       
+          /**
+           * Defines the horizontal position on the screen
+           * @type {'left' | 'middle' | 'right'}
+           */
+          position: 'right'
+        }
+      },
+      behaviour: {
+
+ /**
+     * Defines the horizontal position on the screen
+     * @type {'left' | 'middle' | 'right'}
+     */
         /**
          * Defines whether each notification will hide itself automatically after a timeout passes
          * @type {number | false}

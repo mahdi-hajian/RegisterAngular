@@ -5,3 +5,7 @@ export interface Iuser {
     FirstName: string;
     LastName: string;
 }
+export interface IuserLogin {
+    UserName: string;
+    Password: string;
+}

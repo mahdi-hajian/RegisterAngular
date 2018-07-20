@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '../../../node_modules/@angular/common/http';
 import { Iuser, IuserLogin } from '../Interface/iuser';
 import { CookieService } from 'ngx-cookie-service';
+import { Observable } from '../../../node_modules/rxjs';
 
 
 @Injectable({
@@ -28,13 +29,14 @@ export class UserService {
    loginUser(user: IuserLogin){
     return this.http.post(this.url+"/Account/Login", user);
    }
-
+   
    isLogin(){
     const header = new HttpHeaders({
       'Authorization': "bearer "+this.cookieService.get("UserSession")
     });
-    return this.http.get(this.url+"/Account/IsLogin", {headers: header});
-   }
+    this.http.get(this.url+"/Account/IsLogin", {headers: header});
+    
+  }
 
     GetUserClaim(){
       const header = new HttpHeaders({

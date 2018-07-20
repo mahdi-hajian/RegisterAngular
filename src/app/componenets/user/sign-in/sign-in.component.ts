@@ -27,7 +27,7 @@ export class SignInComponent implements OnInit {
     
     this.userService.loginUser(this.userSignInForm.value).subscribe((c) => {
        this.notifier.notify( 'success', c["message"] ),
-       this.Cookie.set("UserSession", c["token"]),
+       this.Cookie.set("UserSession", c["token"], 1, '/'),
        this.route.navigate(['/home'])
       },
      () => {this.notifier.notify( 'error', "نام کاربری یا پسورد شما اشتباه است" )}

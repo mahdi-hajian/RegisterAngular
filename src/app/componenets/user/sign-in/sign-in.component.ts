@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { UserService } from '../../../Services/user.service';
 import { NotifierService } from 'angular-notifier';
 import { Router } from '@angular/router';
-import { IsLoginService } from '../../../Services/Guard/IsLogin.service';
+import { CookieService } from 'ngx-cookie-service'
 
 @Component({
   selector: 'app-sign-in',
@@ -14,7 +14,7 @@ export class SignInComponent implements OnInit {
 
   @ViewChild('userSignInForm') userSignInForm: NgForm;
 
-  constructor(private userService: UserService, private notifier: NotifierService, private route: Router) { }
+  constructor(private userService: UserService, private notifier: NotifierService, private route: Router, private Cookie: CookieService) { }
 
   ngOnInit() {
   }
@@ -27,7 +27,7 @@ export class SignInComponent implements OnInit {
     
     this.userService.loginUser(this.userSignInForm.value).subscribe((c) => {
        this.notifier.notify( 'success', c["message"] ),
-       localStorage.setItem("UserSession", c["token"]),
+       this.Cookie.set("UserSession", c["token"]),
        this.route.navigate(['/home'])
       },
      () => {this.notifier.notify( 'error', "نام کاربری یا پسورد شما اشتباه است" )}

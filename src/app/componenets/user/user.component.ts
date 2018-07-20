@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IsLoginService } from '../../Services/Guard/IsLogin.service';
 
 @Component({
   selector: 'app-user',

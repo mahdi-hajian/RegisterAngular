@@ -10,6 +10,13 @@ import { AppRoutingModule } from './/app-routing.module';
 import { UserComponent } from './Componenets/user/user.component';
 import { SignInComponent } from './Componenets/user/sign-in/sign-in.component';
 import { HomeComponent } from './Componenets/home/home.component';
+import { CookieService } from 'ngx-cookie-service';
+// kookie
+// npm install ngx-cookie-service --save
+// 0.peovide in appModule
+// 1.npm install ngx-cookie-service --save
+// 2.add to your module: import { CookieService } from 'ngx-cookie-service';
+// 3.inject it to your constructor.
 
 @NgModule({
   declarations: [
@@ -57,7 +64,7 @@ import { HomeComponent } from './Componenets/home/home.component';
     }),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

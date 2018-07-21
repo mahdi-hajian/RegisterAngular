@@ -8,4 +8,5 @@ export interface Iuser {
 export interface IuserLogin {
     UserName: string;
     Password: string;
+    Ip: string;
 }

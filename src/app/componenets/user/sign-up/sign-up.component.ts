@@ -3,6 +3,7 @@ import { NgForm } from '../../../../../node_modules/@angular/forms';
 import { UserService } from '../../../Services/user.service';
 import { NotifierService } from '../../../../../node_modules/angular-notifier';
 import { Iuser } from '../../../Interface/iuser';
+import { Router } from '../../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +15,7 @@ export class SignUpComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
   pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   
-  constructor(private userService: UserService, private notifier: NotifierService ) { }
+  constructor(private userService: UserService, private notifier: NotifierService, private router: Router ) { }
   
   @ViewChild('userRegistrationForm') userRegistrationForm: NgForm;
   ngOnInit() {
@@ -27,11 +28,13 @@ export class SignUpComponent implements OnInit {
   }
   // npm install angular-notifier
   onSubmit() {
+    
     this.userService.registerUser(this.userRegistrationForm.value).subscribe(
       (data: any) => {
         if (data.succeeded == true) {
           this.notifier.notify( 'success', 'شما با موفقیت ثبت نام کردید' );
-          this.resetForm(this.userRegistrationForm);
+          this.resetForm(this.userRegistrationForm);          
+          this.router.navigate(['/user/Login']);
         }else{
           data.errors.forEach(element => {
             this.notifier.notify( 'error', element.description );

@@ -13,10 +13,14 @@ import { CookieService } from 'ngx-cookie-service'
 export class SignInComponent implements OnInit {
 
   @ViewChild('userSignInForm') userSignInForm: NgForm;
+  ipAddress;
 
   constructor(private userService: UserService, private notifier: NotifierService, private route: Router, private Cookie: CookieService) { }
 
   ngOnInit() {
+    this.userService.GetIpAddress().subscribe(
+      (c) => {this.ipAddress = c.ip}
+    )
   }
 
   resetForm(form?: NgForm){
@@ -24,8 +28,7 @@ export class SignInComponent implements OnInit {
   }
 
   onLogin(){
-    
-    this.userService.loginUser(this.userSignInForm.value).subscribe((c) => {
+    this.userService.loginUser(this.userSignInForm.value, this.ipAddress).subscribe((c) => {
        this.notifier.notify( 'success', c["message"] ),
        this.Cookie.set("UserSession", c["token"], 1, '/'),
        this.route.navigate(['/home'])

@@ -7,14 +7,13 @@
   </div>
   <div class="row">
     <div class="input-field col s12">
-        
       <input required ngModel minlength="6" type="password" name="Password" #UserName="ngModel">
       <label><span class="fa fa-key" ></span> Password</label>
     </div>
   </div>
   <div class="row">
     <div class="input-field" style="text-align: center">
-      <button [disabled]="!userSignInForm.valid" type="submit" class="btn-large btn-submit">Login {{a}}</button>
+      <button [disabled]="!userSignInForm.valid" type="submit" class="btn-large btn-submit">Login</button>
     </div>
   </div>
 </form>

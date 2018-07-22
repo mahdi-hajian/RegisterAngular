@@ -14,6 +14,7 @@ import { TestGuardComponent } from './components/test-guard/test-guard.component
 import { ResetPasswordComponent } from './Components/Confirmation/reset-password/reset-password.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CookieService } from '../../node_modules/ngx-cookie-service';
+import { RequestResetPasswordComponent } from './Components/Confirmation/request-reset-password/request-reset-password.component';
 
 // kookie
 // npm install ngx-cookie-service --save
@@ -31,7 +32,8 @@ import { CookieService } from '../../node_modules/ngx-cookie-service';
     HomeComponent,
     ConfirmEmailResultComponent,
     TestGuardComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    RequestResetPasswordComponent
   ],
   imports: [
     BrowserModule,

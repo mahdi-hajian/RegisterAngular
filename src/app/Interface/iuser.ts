@@ -14,7 +14,7 @@ export interface IuserConfirmEmail {
     UserName: string;
     Token: string;
 }
-export interface IuserReasetPassword {
+export interface IuserResetPassword {
     UserName: string;
     Token: string;
     NewPassword: string;

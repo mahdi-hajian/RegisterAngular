@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '../../../node_modules/@angular/common/http';
-import { Iuser, IuserLogin, IuserConfirmEmail, IuserReasetPassword } from '../Interface/iuser';
+import { Iuser, IuserLogin, IuserConfirmEmail, IuserResetPassword } from '../Interface/iuser';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from '../../../node_modules/rxjs';
 
@@ -47,13 +47,20 @@ export class UserService {
      return this.http.get(this.url+"/Account/ConfirmEmail", {headers: header});
   }
 
-  ResetPassword(head: IuserReasetPassword){
+  ResetPassword(head: IuserResetPassword){
     const header = new HttpHeaders({
-      'NewPassword': head.NewPassword,
       'UserName': head.UserName,
-      'Token': head.Token
+      'Token': head.Token,
+      'NewPassword': head.NewPassword
     });
-     return this.http.get(this.url+"/Account/ConfirmEmail", {headers: header});
+     return this.http.get(this.url+"/Account/ResetPassword", {headers: header});
+  }
+
+  RequestResetPassword(email: string){
+    const header = new HttpHeaders({
+      'email': email
+    });
+    return this.http.get(this.url+"/Account/RequestForResetPassword", {headers: header});
   }
 
   IsUserLogin(){

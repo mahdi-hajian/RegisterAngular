@@ -8,12 +8,14 @@ import { UserComponent } from './components/user/user.component';
 import { SignInComponent } from './components/user/sign-in/sign-in.component';
 import { SignUpComponent } from './Components/user/sign-up/sign-up.component';
 import { ResetPasswordComponent } from './Components/Confirmation/reset-password/reset-password.component';
+import { RequestResetPasswordComponent } from './Components/Confirmation/request-reset-password/request-reset-password.component';
 
 
 const routes: Routes = [
   {path:'', redirectTo: 'user', pathMatch: 'full'},
   {path: 'Account/ConfirmEmail', component: ConfirmEmailResultComponent},
   {path: 'Account/ResetPassword', component: ResetPasswordComponent},
+  {path: 'RequestResetPassword', component: RequestResetPasswordComponent},
   {path: 'TestGuard', component: TestGuardComponent, canActivate: [AuthGuardService]},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
   {path:'user', component: UserComponent, children: [

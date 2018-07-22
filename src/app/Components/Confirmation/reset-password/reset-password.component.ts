@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../Services/user.service';
 import { Subscription } from 'rxjs';
-import { IuserConfirmEmail, IuserReasetPassword } from '../../../Interface/iuser';
+import { IuserConfirmEmail, IuserResetPassword } from '../../../Interface/iuser';
 import { NotifierService } from 'angular-notifier';
+import { NgForm } from '../../../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-reset-password',
@@ -14,16 +15,23 @@ export class ResetPasswordComponent implements OnInit {
 
   constructor(private activeRoute: ActivatedRoute, private userService: UserService, private notifier: NotifierService ) { }
 
-  header: IuserReasetPassword = {NewPassword: '', UserName: '', Token: ''};
-result ;
-userSubscription: Subscription;
+  header: IuserResetPassword = {UserName: '', Token: '', NewPassword: ''};
+  ConfirmPasswordValidation: boolean = false ;
+  userSubscription: Subscription;
+  @ViewChild('ConfirmPassword') ConfirmPassword: ElementRef; 
+  @ViewChild('Password') Password: ElementRef; 
+  @ViewChild('ResetPasswordForm') ResetPasswordForm: NgForm;
 
   ngOnInit() {
-        try {
+        
+    }
+    OnResetPassword(){
+      this.header.NewPassword = this.Password['viewModel'];
+      try {
             this.userSubscription = this
             .activeRoute
             .queryParams.subscribe(
-              (params: IuserConfirmEmail ) => {this.header.Token = params.Token, this.header.UserName = params.UserName});
+              (params: IuserResetPassword ) => {this.header.Token = params.Token, this.header.UserName = params.UserName});
               
               this.userService.ResetPassword(this.header).subscribe(
                 (data: any) => {
@@ -40,10 +48,17 @@ userSubscription: Subscription;
           
         }
     }
-    
-    // نابود کردن اسینکرون بالا
+
     ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }
 
+  validatePassword(){
+    if (this.Password['viewModel'] != this.ConfirmPassword['viewModel']) {
+      this.ConfirmPasswordValidation = false;
+    } else {
+      this.ConfirmPasswordValidation = true;
+    }
+  }
+  
 }

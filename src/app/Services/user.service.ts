@@ -35,14 +35,6 @@ export class UserService {
     return this.http.post(this.url+"/Account/Login", body);
    }
    
-   isLogin(){
-    const header = new HttpHeaders({
-      'Authorization': "bearer "+this.cookieService.get("UserSession")
-    });
-    this.http.get(this.url+"/Account/IsLogin", {headers: header});
-    
-  }
-
   GetIpAddress(){
     return this.http.get("https://api.ipify.org?format=json");
   }
@@ -53,6 +45,13 @@ export class UserService {
       'Token': user.Token
     });
      return this.http.get(this.url+"/Account/ConfirmEmail", {headers: header});
+  }
+
+  IsUserLogin(){
+    const header = new HttpHeaders({
+      'Authorization': "bearer "+this.cookieService.get("UserSession")
+    });
+     return this.http.get(this.url+"/Account/IsUserLogin", {headers: header});
   }
 
   GetUserClaim(){

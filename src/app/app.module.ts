@@ -5,14 +5,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotifierModule  } from 'angular-notifier';
 
 import { AppComponent } from './app.component';
-import { SignUpComponent } from './componenets/user/sign-up/sign-up.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { UserComponent } from './Componenets/user/user.component';
-import { SignInComponent } from './Componenets/user/sign-in/sign-in.component';
-import { HomeComponent } from './Componenets/home/home.component';
-import { CookieService } from 'ngx-cookie-service';
-import { ConfirmEmailResultComponent } from './componenets/confirm-email-result/confirm-email-result.component';
-import { TestGuardComponent } from './componenets/test-guard/test-guard.component';
+import { SignUpComponent } from './Components/user/sign-up/sign-up.component';
+import { UserComponent } from './components/user/user.component';
+import { SignInComponent } from './components/user/sign-in/sign-in.component';
+import { HomeComponent } from './components/home/home.component';
+import { ConfirmEmailResultComponent } from './components/Confirmation/confirm-email-result/confirm-email-result.component';
+import { TestGuardComponent } from './components/test-guard/test-guard.component';
+import { ResetPasswordComponent } from './Components/Confirmation/reset-password/reset-password.component';
+import { AppRoutingModule } from './app-routing.module';
+import { CookieService } from '../../node_modules/ngx-cookie-service';
+
 // kookie
 // npm install ngx-cookie-service --save
 // 0.peovide in appModule
@@ -28,7 +30,8 @@ import { TestGuardComponent } from './componenets/test-guard/test-guard.componen
     SignInComponent,
     HomeComponent,
     ConfirmEmailResultComponent,
-    TestGuardComponent
+    TestGuardComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

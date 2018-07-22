@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { IuserConfirmEmail } from '../../Interface/iuser';
+import { IuserConfirmEmail } from '../../../Interface/iuser';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
-import { UserService } from '../../Services/user.service';
+import { ActivatedRoute } from '../../../../../node_modules/@angular/router';
+import { UserService } from '../../../Services/user.service';
 
 @Component({
   selector: 'app-confirm-email-result',

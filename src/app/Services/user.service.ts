@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '../../../node_modules/@angular/common/http';
-import { Iuser, IuserLogin } from '../Interface/iuser';
+import { Iuser, IuserLogin, IuserConfirmEmail } from '../Interface/iuser';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from '../../../node_modules/rxjs';
 
@@ -47,8 +47,12 @@ export class UserService {
     return this.http.get("https://api.ipify.org?format=json");
   }
 
-  SetConfirmEmail(){
-    
+  SetConfirmEmail(user: IuserConfirmEmail){
+    const header = new HttpHeaders({
+      'UserName': user.UserName,
+      'Token': user.Token
+    });
+     return this.http.get(this.url+"/Account/ConfirmEmail", {headers: header});
   }
 
   GetUserClaim(){

@@ -11,6 +11,7 @@ import { UserComponent } from './Componenets/user/user.component';
 import { SignInComponent } from './Componenets/user/sign-in/sign-in.component';
 import { HomeComponent } from './Componenets/home/home.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ConfirmEmailResultComponent } from './componenets/confirm-email-result/confirm-email-result.component';
 // kookie
 // npm install ngx-cookie-service --save
 // 0.peovide in appModule
@@ -24,7 +25,8 @@ import { CookieService } from 'ngx-cookie-service';
     SignUpComponent,
     UserComponent,
     SignInComponent,
-    HomeComponent
+    HomeComponent,
+    ConfirmEmailResultComponent
   ],
   imports: [
     BrowserModule,

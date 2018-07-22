@@ -19,7 +19,7 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.userService.GetIpAddress().subscribe(
-      (c) => {this.ipAddress = c.ip}
+      (c) => {this.ipAddress = c['ip']}
     )
   }
 

@@ -10,3 +10,7 @@ export interface IuserLogin {
     Password: string;
     Ip: string;
 }
+export interface IuserConfirmEmail {
+    UserName: string;
+    Token: string;
+}

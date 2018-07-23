@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../Services/user.service';
 import { Subscription } from 'rxjs';
 import { IuserConfirmEmail, IuserResetPassword } from '../../../Interface/iuser';
 import { NotifierService } from 'angular-notifier';
-import { NgForm } from '../../../../../node_modules/@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,7 +13,7 @@ import { NgForm } from '../../../../../node_modules/@angular/forms';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  constructor(private activeRoute: ActivatedRoute, private userService: UserService, private notifier: NotifierService ) { }
+  constructor(private activeRoute: ActivatedRoute, private userService: UserService, private notifier: NotifierService, private router: Router) { }
 
   header: IuserResetPassword = {UserName: '', Token: '', NewPassword: ''};
   ConfirmPasswordValidation: boolean = false ;
@@ -36,7 +36,8 @@ export class ResetPasswordComponent implements OnInit {
               this.userService.ResetPassword(this.header).subscribe(
                 (data: any) => {
                   if (data.succeeded == true) {
-                    this.notifier.notify( 'success', 'گذرواژه شما با موفقیت تغییر کرد' )
+                    this.notifier.notify( 'success', 'گذرواژه شما با موفقیت تغییر کرد' ),
+                    this.router.navigate(['/user/Login'])
                   } else{
                     data.errors.forEach(element => {
                       this.notifier.notify( 'error', element.description )

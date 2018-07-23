@@ -1,24 +1,66 @@
- <nav>
-     <div class="nav-wrapper">
-        <a style="cursor: pointer;" class="brand-logo center">
-            <i class="fas fa-cloud">cloud</i>
-            Dotnet mob App
-        </a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li>
-                <a style="cursor: pointer;" (click)="logOut()">LogOut </a>
-            </li>
-        </ul>
-     </div>
- </nav>
- <div class="row" >
-     <div class="col s12 m7">
-        <div class="card">   
-            <div class="card-content">
-                <span *ngFor="let item of userClaims">
-                    {{item}} <br>
-                </span>
+<nav>
+  <div class="nav-wrapper">
+    <a style="cursor: pointer;" class="brand-logo center">
+      <i class="fas fa-cloud">cloud</i>
+      Dotnet mob App
+    </a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>
+        <a style="cursor: pointer;" (click)="logOut()">LogOut </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="row">
+  <div class="col s12 m7">
+    <div class="card">
+      <div class="card-content">
+        <span *ngFor="let item of userClaims">
+          {{item}}
+          <br>
+        </span>
+      </div>
+      <span class="btn btn-primary btn-block" (click)="onConfirmEmailAgain()">Confirm Email Again</span>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card cyan darken-4">
+      <div class="card-content white-text">
+        <span class="card-title">Change Password</span>
+        <form (ngSubmit)="OnChangePassword()" #ChangePasswordForm="ngForm">
+          <div class="row">
+            <div class="input-field col s12">
+              <input required ngModel minlength="6" (change)='validatePassword()' (keyup)="validatePassword()" type="password" name="CurrentPassword"
+                #CurrentPassword="ngModel">
+              <label>
+                <span class="fa fa-key"></span> Current Password</label>
             </div>
-        </div>
-     </div>
- </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input required ngModel minlength="6" (change)='validatePassword()' (keyup)="validatePassword()" type="password" name="NewPassword"
+                #NewPassword="ngModel">
+              <label>
+                <span class="fa fa-key"></span> Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input required (change)='validatePassword()' (keyup)="validatePassword()" ngModel minlength="6" type="password" name="ConfirmPassword"
+                #ConfirmPassword="ngModel">
+              <label>
+                <span class="fa fa-key"></span> Confirm Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="card-action">
+                <button [disabled]="!ChangePasswordForm.valid || !ConfirmPasswordValidation" type="submit" id="SubmitRestPassword" class="btn-submit btn-large">Change Password</button>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

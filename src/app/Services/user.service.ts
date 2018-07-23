@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '../../../node_modules/@angular/common/http';
-import { Iuser, IuserLogin, IuserConfirmEmail, IuserResetPassword } from '../Interface/iuser';
+import { Iuser, IuserLogin, IuserConfirmEmail, IuserResetPassword, IuserChangePassword } from '../Interface/iuser';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from '../../../node_modules/rxjs';
 
@@ -47,6 +47,13 @@ export class UserService {
      return this.http.get(this.url+"/Account/ConfirmEmail", {headers: header});
   }
 
+  SetConfirmEmailAgain(){
+    const header = new HttpHeaders({
+      'Authorization': "bearer "+this.cookieService.get("UserSession")
+    });
+    return this.http.get(this.url+"/Account/ConfirmEmailAgain",{headers: header})
+  }
+
   ResetPassword(head: IuserResetPassword){
     const header = new HttpHeaders({
       'UserName': head.UserName,
@@ -75,5 +82,16 @@ export class UserService {
       'Authorization': "bearer "+this.cookieService.get("UserSession")
     });
      return this.http.get(this.url+"/Account/GetDetails", {headers: header});
+  }
+
+  ChangePassword(input: IuserChangePassword){
+    const header = new HttpHeaders({
+      'Authorization': "bearer "+this.cookieService.get("UserSession")
+    });
+    const body: IuserChangePassword = {
+      CurrentPassword: input.CurrentPassword,
+      NewPassword: input.NewPassword
+    };
+     return this.http.post(this.url+"/Account/ChangePassword", body, {headers: header});
   }
 }

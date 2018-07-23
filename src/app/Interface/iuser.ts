@@ -19,3 +19,8 @@ export interface IuserResetPassword {
     Token: string;
     NewPassword: string;
 }
+
+export interface IuserChangePassword {
+    CurrentPassword: string;
+    NewPassword: string;
+}

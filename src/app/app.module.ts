@@ -9,12 +9,13 @@ import { SignUpComponent } from './Components/user/sign-up/sign-up.component';
 import { UserComponent } from './components/user/user.component';
 import { SignInComponent } from './components/user/sign-in/sign-in.component';
 import { HomeComponent } from './components/home/home.component';
-import { ConfirmEmailResultComponent } from './components/Confirmation/confirm-email-result/confirm-email-result.component';
 import { TestGuardComponent } from './components/test-guard/test-guard.component';
 import { ResetPasswordComponent } from './Components/Confirmation/reset-password/reset-password.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CookieService } from '../../node_modules/ngx-cookie-service';
 import { RequestResetPasswordComponent } from './Components/Confirmation/request-reset-password/request-reset-password.component';
+import { ConfirmChangeEmailComponent } from './Components/Confirmation/confirm-change-email/confirm-change-email.component';
+import { ConfirmEmailResultComponent } from './components/Confirmation/confirm-email-result/confirm-email-result.component';
 
 // kookie
 // npm install ngx-cookie-service --save
@@ -33,7 +34,8 @@ import { RequestResetPasswordComponent } from './Components/Confirmation/request
     ConfirmEmailResultComponent,
     TestGuardComponent,
     ResetPasswordComponent,
-    RequestResetPasswordComponent
+    RequestResetPasswordComponent,
+    ConfirmChangeEmailComponent
   ],
   imports: [
     BrowserModule,

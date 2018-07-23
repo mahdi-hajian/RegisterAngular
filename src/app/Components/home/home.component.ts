@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('NewPassword') NewPassword: ElementRef; 
   @ViewChild('ConfirmPassword') ConfirmPassword: ElementRef; 
   @ViewChild('ChangePasswordForm') ChangePasswordForm: NgForm;
+  @ViewChild('NewEmail') NewEmail: ElementRef;
   userClaims;
   ngOnInit() {
     this.userService.GetUserClaim().subscribe(
@@ -81,7 +82,7 @@ export class HomeComponent implements OnInit {
       (data: any) => {
         if (data.succeeded == true) {
           this.notifier.notify( 'success', 'گذرواژه ی شما با موفقیت تغییر کرد' );
-          this.ChangePassworForm.reset();
+          this.ResetForm(this.ChangePasswordForm);
           } else{
             data.errors.forEach(element => {
               this.notifier.notify( 'error', element.description )
@@ -89,5 +90,21 @@ export class HomeComponent implements OnInit {
           }
         }
       )
+  }
+  
+  OnNewEmail(){
+    const newEmail: string = this.NewEmail.nativeElement.value;
+    this.userService.SetNewEmail(newEmail).subscribe(
+      (data: any) => {
+        if (data.succeeded == true) {
+          this.notifier.notify('success', 'یک ایمیل برای تایید ایمیلتان برایتان ارسال شد');
+          this.ResetForm(this.ChangePasswordForm);
+        } else {
+          data.errors.forEach(element => {
+            this.notifier.notify('error', element.description)
+          });
+        }
+      }
+    )
   }
 }

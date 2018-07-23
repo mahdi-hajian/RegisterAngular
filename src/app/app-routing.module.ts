@@ -9,11 +9,13 @@ import { SignInComponent } from './components/user/sign-in/sign-in.component';
 import { SignUpComponent } from './Components/user/sign-up/sign-up.component';
 import { ResetPasswordComponent } from './Components/Confirmation/reset-password/reset-password.component';
 import { RequestResetPasswordComponent } from './Components/Confirmation/request-reset-password/request-reset-password.component';
+import { ConfirmChangeEmailComponent } from './Components/Confirmation/confirm-change-email/confirm-change-email.component';
 
 
 const routes: Routes = [
   {path:'', redirectTo: 'user', pathMatch: 'full'},
-  {path: 'Account/ConfirmEmail', component: ConfirmEmailResultComponent},
+  { path: 'Account/ConfirmEmail', component: ConfirmEmailResultComponent },
+  { path: 'Account/ConfirmChangeEmail', component: ConfirmChangeEmailComponent },
   {path: 'Account/ResetPassword', component: ResetPasswordComponent},
   {path: 'Account/RequestResetPassword', component: RequestResetPasswordComponent},
   {path: 'TestGuard', component: TestGuardComponent, canActivate: [AuthGuardService]},

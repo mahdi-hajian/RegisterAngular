@@ -41,25 +41,28 @@
           <div class="row">
             <div class="input-field col s12">
               <input required ngModel minlength="6" (change)='validatePassword()' (keyup)="validatePassword()" type="password" name="CurrentPassword"
-                #CurrentPassword="ngModel">
+                     #CurrentPassword="ngModel">
               <label>
-                <span class="fa fa-key"></span> Current Password</label>
+                <span class="fa fa-key"></span> Current Password
+              </label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <input required ngModel minlength="6" (change)='validatePassword()' (keyup)="validatePassword()" type="password" name="NewPassword"
-                #NewPassword="ngModel">
+                     #NewPassword="ngModel">
               <label>
-                <span class="fa fa-key"></span> Password</label>
+                <span class="fa fa-key"></span> Password
+              </label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
               <input required (change)='validatePassword()' (keyup)="validatePassword()" ngModel minlength="6" type="password" name="ConfirmPassword"
-                #ConfirmPassword="ngModel">
+                     #ConfirmPassword="ngModel">
               <label>
-                <span class="fa fa-key"></span> Confirm Password</label>
+                <span class="fa fa-key"></span> Confirm Password
+              </label>
             </div>
           </div>
           <div class="row">

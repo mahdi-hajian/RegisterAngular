@@ -16,8 +16,8 @@ const routes: Routes = [
   {path:'', redirectTo: 'user', pathMatch: 'full'},
   { path: 'Account/ConfirmEmail', component: ConfirmEmailResultComponent },
   { path: 'Account/ConfirmChangeEmail', component: ConfirmChangeEmailComponent },
-  {path: 'Account/ResetPassword', component: ResetPasswordComponent},
-  {path: 'Account/RequestResetPassword', component: RequestResetPasswordComponent},
+  { path: 'Account/ForgetPassword', component: ResetPasswordComponent},
+  { path: 'Account/RequestForForgetPassword', component: RequestResetPasswordComponent},
   {path: 'TestGuard', component: TestGuardComponent, canActivate: [AuthGuardService]},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
   {path:'user', component: UserComponent, children: [

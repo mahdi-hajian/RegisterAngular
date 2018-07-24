@@ -15,51 +15,53 @@ export class ResetPasswordComponent implements OnInit {
 
   constructor(private activeRoute: ActivatedRoute, private userService: UserService, private notifier: NotifierService, private router: Router) { }
 
-  header: IuserResetPassword = {UserName: '', Token: '', NewPassword: ''};
-  ConfirmPasswordValidation: boolean = false ;
+  ChangePasswordSender: IuserResetPassword = { UserId: '', NewPassword: '' };
+  Token: string = '';
+  ConfirmPasswordValidation: boolean = false;
   userSubscription: Subscription;
-  @ViewChild('ConfirmPassword') ConfirmPassword: ElementRef; 
-  @ViewChild('Password') Password: ElementRef; 
+  @ViewChild('ConfirmPassword') ConfirmPassword: ElementRef;
+  @ViewChild('Password') Password: ElementRef;
   @ViewChild('ResetPasswordForm') ResetPasswordForm: NgForm;
 
   ngOnInit() {
-        
-    }
-    OnResetPassword(){
-      this.header.NewPassword = this.Password['viewModel'];
-      try {
-            this.userSubscription = this
-            .activeRoute
-            .queryParams.subscribe(
-              (params: IuserResetPassword ) => {this.header.Token = params.Token, this.header.UserName = params.UserName});
-              
-              this.userService.ResetPassword(this.header).subscribe(
-                (data: any) => {
-                  if (data.succeeded == true) {
-                    this.notifier.notify( 'success', 'گذرواژه شما با موفقیت تغییر کرد' ),
-                    this.router.navigate(['/user/Login'])
-                  } else{
-                    data.errors.forEach(element => {
-                      this.notifier.notify( 'error', element.description )
-                    });
-                  }
-                }
-              )
-        } catch (error) {
-          
-        }
-    }
 
-    ngOnDestroy(): void {
+  } 
+  OnResetPassword() {
+    this.ChangePasswordSender.NewPassword = this.Password['viewModel'];
+    try {
+      this.userSubscription = this
+        .activeRoute
+        .queryParams.subscribe(
+        (params) => {
+        this.Token = params['Token'], this.ChangePasswordSender.UserId = params['UserId'] });
+
+      this.userService.ResetPassword(this.ChangePasswordSender, this.Token).subscribe(
+        (data: any) => {
+          if (data.succeeded == true) {
+            this.notifier.notify('success', 'گذرواژه شما با موفقیت تغییر کرد'),
+              this.router.navigate(['/user/Login'])
+          } else {
+            data.errors.forEach(element => {
+              this.notifier.notify('error', element.description)
+            });
+          }
+        }
+      )
+    } catch (error) {
+
+    }
+  }
+
+  ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }
 
-  validatePassword(){
+  validatePassword() {
     if (this.Password['viewModel'] != this.ConfirmPassword['viewModel']) {
       this.ConfirmPasswordValidation = false;
     } else {
       this.ConfirmPasswordValidation = true;
     }
   }
-  
+
 }

@@ -41,10 +41,9 @@ export class UserService {
 
   SetConfirmEmail(user: IuserConfirmEmail){
     const header = new HttpHeaders({
-      'UserName': user.UserName,
       'Token': user.Token
     });
-     return this.http.get(this.url+"/Account/ConfirmEmail", {headers: header});
+    return this.http.get(this.url + "/Account/ConfirmEmail?userId=" + user.UserId, { headers: header });
   }
 
   SetConfirmEmailAgain(){
@@ -54,20 +53,15 @@ export class UserService {
     return this.http.get(this.url+"/Account/ConfirmEmailAgain",{headers: header})
   }
 
-  ResetPassword(head: IuserResetPassword){
+  ResetPassword(body: IuserResetPassword, Token: string) {
     const header = new HttpHeaders({
-      'UserName': head.UserName,
-      'Token': head.Token,
-      'NewPassword': head.NewPassword
+      'Token': Token,
     });
-     return this.http.get(this.url+"/Account/ResetPassword", {headers: header});
+    return this.http.post(this.url + "/Account/ForgetPassword",body , { headers: header });
   }
 
   RequestResetPassword(email: string){
-    const header = new HttpHeaders({
-      'email': email
-    });
-    return this.http.get(this.url+"/Account/RequestForResetPassword", {headers: header});
+    return this.http.get(this.url + "/Account/RequestForForgetPassword?email=" + email);
   }
 
   IsUserLogin(){

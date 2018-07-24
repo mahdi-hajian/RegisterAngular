@@ -1,7 +1,15 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\Components",
+    "\\src\\app\\Components\\Confirmation",
+    "\\src\\app\\Components\\Confirmation\\confirm-change-email",
+    "\\src\\app\\Components\\Confirmation\\confirm-email-result",
+    "\\src\\app\\Components\\home",
+    "\\src\\app\\Services"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\src\\app\\Components\\home\\home.component.html",
   "PreviewInSolutionExplorer": false
 }

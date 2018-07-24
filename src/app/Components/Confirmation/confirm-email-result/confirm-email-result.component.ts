@@ -14,7 +14,7 @@ export class ConfirmEmailResultComponent implements OnInit, OnDestroy {
   constructor(private activeRoute: ActivatedRoute, private userService: UserService ) { }
 
   user: IuserConfirmEmail = {
-    UserName: '',
+    UserId: '',
     Token: ''
 };
 result ;

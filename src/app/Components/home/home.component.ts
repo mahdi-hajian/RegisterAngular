@@ -1,8 +1,8 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../Services/user.service';
 import { NotifierService } from 'angular-notifier';
-import { AuthGuardService } from '../../Services/Guard/AuthGuard.service';
+import { LoginGuardService } from '../../Services/Guard/AuthGuard.service';
 import { NgForm } from '../../../../node_modules/@angular/forms';
 import { IuserChangePassword } from '../../Interface/iuser';
 
@@ -13,7 +13,8 @@ import { IuserChangePassword } from '../../Interface/iuser';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private LogOutWithToken: AuthGuardService, private router: Router, private userService: UserService, private notifier: NotifierService) { }
+
+  constructor(private LogOutWithToken: LoginGuardService, private router: Router, private userService: UserService, private notifier: NotifierService) { }
   ConfirmPasswordValidation: boolean = false ;
   @ViewChild('CurrentPassword') CurrentPassword: ElementRef; 
   @ViewChild('NewPassword') NewPassword: ElementRef; 
@@ -21,9 +22,10 @@ export class HomeComponent implements OnInit {
   @ViewChild('ChangePasswordForm') ChangePasswordForm: NgForm;
   @ViewChild('NewEmail') NewEmail: ElementRef;
   userClaims;
+
   ngOnInit() {
+
     this.userService.GetUserClaim().subscribe(
-      
       (a) => {this.userClaims = a
       },
       (err) => {

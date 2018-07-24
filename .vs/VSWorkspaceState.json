@@ -4,13 +4,8 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\Components",
-    "\\src\\app\\Components\\Confirmation",
-    "\\src\\app\\Components\\Confirmation\\reset-password",
-    "\\src\\app\\Components\\home",
-    "\\src\\app\\Components\\user",
-    "\\src\\app\\Components\\user\\sign-in",
-    "\\src\\app\\Components\\user\\sign-up"
+    "\\src\\app\\Components\\user"
   ],
-  "SelectedNode": "\\src\\app\\Services\\user.service.ts",
+  "SelectedNode": "\\src\\app\\Components\\user\\user.component.html",
   "PreviewInSolutionExplorer": false
 }

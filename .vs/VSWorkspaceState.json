@@ -5,11 +5,12 @@
     "\\src\\app",
     "\\src\\app\\Components",
     "\\src\\app\\Components\\Confirmation",
-    "\\src\\app\\Components\\Confirmation\\confirm-change-email",
-    "\\src\\app\\Components\\Confirmation\\confirm-email-result",
+    "\\src\\app\\Components\\Confirmation\\reset-password",
     "\\src\\app\\Components\\home",
-    "\\src\\app\\Services"
+    "\\src\\app\\Components\\user",
+    "\\src\\app\\Components\\user\\sign-in",
+    "\\src\\app\\Components\\user\\sign-up"
   ],
-  "SelectedNode": "\\src\\app\\Components\\home\\home.component.html",
+  "SelectedNode": "\\src\\app\\Services\\user.service.ts",
   "PreviewInSolutionExplorer": false
 }

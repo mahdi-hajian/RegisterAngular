@@ -1,7 +1,7 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ConfirmEmailResultComponent } from './components/Confirmation/confirm-email-result/confirm-email-result.component';
-import { AuthGuardService } from './Services/Guard/AuthGuard.service';
+import { LoginGuardService, UserGuardService, AdminGuardService, LeaderGuardService } from './Services/Guard/AuthGuard.service';
 import { TestGuardComponent } from './components/test-guard/test-guard.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserComponent } from './components/user/user.component';
@@ -18,8 +18,8 @@ const routes: Routes = [
   { path: 'Account/ConfirmChangeEmail', component: ConfirmChangeEmailComponent },
   { path: 'Account/ForgetPassword', component: ResetPasswordComponent},
   { path: 'Account/RequestForForgetPassword', component: RequestResetPasswordComponent},
-  {path: 'TestGuard', component: TestGuardComponent, canActivate: [AuthGuardService]},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
+  { path: 'TestGuard', component: TestGuardComponent, canActivate: [LoginGuardService]},
+  { path: 'home', component: HomeComponent, canActivate: [LoginGuardService]},
   {path:'user', component: UserComponent, children: [
     {path:'SingUp', component: SignUpComponent},
     {path:'', redirectTo: 'SingUp', pathMatch: 'full'},
